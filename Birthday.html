@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday ضحى! 🎉</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      position: relative;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .center-decoration {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      margin-bottom: 30px;
+    }
+
+    .heart-main {
+      width: 200px;
+      height: 200px;
+      position: relative;
+      animation: heartBeat 1.5s ease infinite;
+      filter: drop-shadow(0 10px 30px rgba(255, 105, 180, 0.5));
+    }
+
+    .heart-main::before,
+    .heart-main::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 120px;
+      height: 190px;
+      background: linear-gradient(135deg, #ff69b4 0%, #ff1493 100%);
+      border-radius: 120px 120px 0 0;
+      animation: heartGlow 1.5s ease infinite;
+    }
+
+    .heart-main::before {
+      left: 100px;
+      transform: translate(-50%, 0) rotate(-45deg);
+      transform-origin: 0 100%;
+    }
+
+    .heart-main::after {
+      right: 100px;
+      transform: translate(50%, 0) rotate(45deg);
+      transform-origin: 100% 100%;
+    }
+
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    @keyframes heartGlow {
+      0%, 100% { 
+        box-shadow: 0 0 20px rgba(255, 105, 180, 0.6),
+                    inset -5px -5px 15px rgba(0,0,0,0.1);
+      }
+      50% { 
+        box-shadow: 0 0 40px rgba(255, 105, 180, 1),
+                    inset -5px -5px 15px rgba(0,0,0,0.2);
+      }
+    }
+
+    .name-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 20;
+      color: white;
+      font-size: 3rem;
+      font-weight: bold;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      letter-spacing: 2px;
+    }
+
+    .birthday-text {
+      font-size: 4rem;
+      background: linear-gradient(45deg, #ff69b4, #ff1493, #ff69b4, #ff1493);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 15px;
+      z-index: 10;
+      font-weight: bold;
+      animation: bounce 2s ease infinite, gradientShift 3s ease infinite;
+      text-shadow: none;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .emoji-row {
+      font-size: 3rem;
+      margin: 20px 0;
+      z-index: 10;
+      animation: fadeIn 2s ease forwards;
+      opacity: 0;
+    }
+
+    .emoji-row span {
+      display: inline-block;
+      margin: 0 12px;
+      animation: wiggle 2s ease infinite;
+    }
+
+    .emoji-row span:nth-child(1) { animation-delay: 0s; }
+    .emoji-row span:nth-child(2) { animation-delay: 0.2s; }
+    .emoji-row span:nth-child(3) { animation-delay: 0.4s; }
+    .emoji-row span:nth-child(4) { animation-delay: 0.6s; }
+    .emoji-row span:nth-child(5) { animation-delay: 0.8s; }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(-5deg) scale(1); }
+      50% { transform: rotate(5deg) scale(1.15); }
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    .message {
+      font-size: 1.4rem;
+      color: white;
+      margin: 12px 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 15px 30px;
+      border-radius: 40px;
+      backdrop-filter: blur(15px);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      opacity: 0;
+      animation: fadeInUp 1.5s ease forwards;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      max-width: 90%;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .message:hover {
+      background: rgba(255, 255, 255, 0.25);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-5px);
+    }
+
+    .message:nth-of-type(1) { animation-delay: 0.5s; }
+    .message:nth-of-type(2) { animation-delay: 1s; }
+    .message:nth-of-type(3) { animation-delay: 1.5s; }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .controls {
+      position: fixed;
+      top: 20px;
+      display: flex;
+      gap: 15px;
+      z-index: 100;
+    }
+
+    button {
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      padding: 12px 20px;
+      border-radius: 50px;
+      cursor: pointer;
+      color: white;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.8);
+      transform: scale(1.15);
+      box-shadow: 0 6px 25px rgba(255, 255, 255, 0.3);
+    }
+
+    .floating-balloon {
+      position: absolute;
+      width: 50px;
+      height: 60px;
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      animation: floatUp linear forwards;
+      pointer-events: none;
+      z-index: 5;
+      opacity: 0.8;
+    }
+
+    .floating-balloon::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background: rgba(255,255,255,0.7);
+      transform: translateX(-50%);
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) rotate(-10deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-20vh) rotate(10deg);
+        opacity: 0;
+      }
+    }
+
+    .falling-item {
+      position: absolute;
+      font-size: 28px;
+      animation: fall linear forwards;
+      pointer-events: none;
+      z-index: 3;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .star {
+      position: absolute;
+      color: #ffd700;
+      font-size: 24px;
+      animation: twinkle 3s infinite;
+      pointer-events: none;
+      z-index: 2;
+      filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.5));
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.2; transform: scale(0.7); }
+      50% { opacity: 1; transform: scale(1.3); }
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: radial-gradient(circle, #ffffff, rgba(255,255,255,0.2));
+      border-radius: 50%;
+      animation: sparkleFloat 3s ease-out forwards;
+      pointer-events: none;
+      z-index: 4;
+      box-shadow: 0 0 10px rgba(255,255,255,0.8);
+    }
+
+    @keyframes sparkleFloat {
+      0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      body {
+        justify-content: flex-start;
+        padding-top: 40px;
+      }
+
+      .center-decoration {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 15px;
+      }
+
+      .heart-main {
+        width: 150px;
+        height: 150px;
+      }
+
+      .heart-main::before,
+      .heart-main::after {
+        width: 90px;
+        height: 140px;
+      }
+
+      .name-overlay {
+        font-size: 2.2rem;
+      }
+
+      .birthday-text {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+
+      .emoji-row {
+        font-size: 2rem;
+        margin: 12px 0;
+      }
+
+      .emoji-row span {
+        margin: 0 6px;
+      }
+
+      .message {
+        font-size: 1rem;
+        padding: 10px 20px;
+        margin: 8px 0;
+      }
+
+      .controls {
+        top: 10px;
+        gap: 10px;
+      }
+
+      button {
+        padding: 10px 15px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="controls">
+    <button id="toggle-audio" title="تشغيل/إيقاف الموسيقى">
+      <i id="audio-icon" class="fa-solid fa-music"></i>
+    </button>
+    <button id="toggle-fullscreen" title="ملء الشاشة">
+      <i id="fullscreen-icon" class="fa-solid fa-expand"></i>
+    </button>
+  </div>
+
+  <h1 class="birthday-text">🎉 Happy Birthday 🎉</h1>
+
+  <div class="emoji-row">
+    <span>✨</span>
+    <span>🎂</span>
+    <span>❤️</span>
+    <span>🎁</span>
+    <span>✨</span>
+  </div>
+
+  <div class="center-decoration">
+    <div class="heart-main"></div>
+    <div class="name-overlay">ضحى</div>
+  </div>
+
+  <div class="message">💖 كل عام وأنتِ بألف خير يا ضحى! 💖</div>
+  <div class="message">🌟 عقبال 100 سنة وتحققي كل أحلامك! 🌟</div>
+  <div class="message">🎊 يومك يكون مليان ضحك وفرح وهدا��ا! 🎊</div>
+
+  <audio id="birthday-audio" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function createFloatingBalloon() {
+      const balloon = document.createElement('div');
+      balloon.className = 'floating-balloon';
+      const colors = ['#ff69b4', '#ff1493', '#ff69b4', '#ff1493', '#ffc0cb'];
+      balloon.style.background = `linear-gradient(135deg, ${colors[0]}, ${colors[Math.floor(Math.random() * colors.length)]})`;
+      balloon.style.left = Math.random() * 100 + 'vw';
+      balloon.style.animationDuration = (Math.random() * 4 + 6) + 's';
+      balloon.style.boxShadow = `0 10px 30px ${colors[Math.floor(Math.random() * colors.length)]}50`;
+      document.body.appendChild(balloon);
+
+      setTimeout(() => balloon.remove(), 10000);
+    }
+
+    setInterval(createFloatingBalloon, 500);
+
+    function createFallingItem() {
+      const item = document.createElement('div');
+      item.className = 'falling-item';
+      const items = ['🧁', '🍰', '🎂', '🎁', '🍬', '🍭', '🎈', '🎊', '❤️'];
+      item.innerHTML = items[Math.floor(Math.random() * items.length)];
+      item.style.left = Math.random() * 100 + 'vw';
+      item.style.animationDuration = (Math.random() * 3 + 4) + 's';
+      item.style.fontSize = (Math.random() * 15 + 24) + 'px';
+      document.body.appendChild(item);
+
+      setTimeout(() => item.remove(), 7000);
+    }
+
+    setInterval(createFallingItem, 700);
+
+    function createStar() {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.innerHTML = '⭐';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.top = Math.random() * 100 + 'vh';
+      star.style.animationDelay = Math.random() * 2 + 's';
+      document.body.appendChild(star);
+
+      setTimeout(() => star.remove(), 5000);
+    }
+
+    setInterval(createStar, 800);
+
+    document.addEventListener('mousemove', (e) => {
+      if (Math.random() > 0.95) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = e.clientX + 'px';
+        sparkle.style.top = e.clientY + 'px';
+        sparkle.style.setProperty('--tx', (Math.random() - 0.5) * 100 + 'px');
+        sparkle.style.setProperty('--ty', (Math.random() - 0.5) * 100 + 'px');
+        document.body.appendChild(sparkle);
+
+        setTimeout(() => sparkle.remove(), 3000);
+      }
+    });
+
+    const audio = document.getElementById('birthday-audio');
+    const audioBtn = document.getElementById('toggle-audio');
+    const audioIcon = document.getElementById('audio-icon');
+    let isPlaying = false;
+
+    audioBtn.addEventListener('click', () => {
+      if (!isPlaying) {
+        audio.play().then(() => {
+          isPlaying = true;
+          audioIcon.classList.replace('fa-music', 'fa-pause');
+          audioBtn.style.background = 'rgba(255, 255, 255, 0.3)';
+        }).catch(e => console.log('Audio play failed:', e));
+      } else {
+        audio.pause();
+        isPlaying = false;
+        audioIcon.classList.replace('fa-pause', 'fa-music');
+        audioBtn.style.background = 'rgba(255, 255, 255, 0.2)';
+      }
+    });
+
+    const fsBtn = document.getElementById('toggle-fullscreen');
+    const fsIcon = document.getElementById('fullscreen-icon');
+
+    fsBtn.addEventListener('click', () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(e => console.log(e));
+        fsIcon.classList.replace('fa-expand', 'fa-compress');
+      } else {
+        document.exitFullscreen();
+        fsIcon.classList.replace('fa-compress', 'fa-expand');
+      }
+    });
+
+    document.addEventListener('dblclick', () => {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(e => console.log(e));
+      }
+    });
+
+    console.log('%c🎉 Happy Birthday ضحى! 🎉', 'font-size: 24px; color: #ff69b4; font-weight: bold;');
+    console.log('%c❤️ كل عام وأنتِ بخير! ❤️', 'font-size: 16px; color: #ff1493;');
+  </script>
+
+</body>
+</html>
